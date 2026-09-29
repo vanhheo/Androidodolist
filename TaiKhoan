@@ -35,7 +35,6 @@ namespace QuanLyGiaoNhan_UNETI15_TI17A1HN.Models
         [Required]
         [StringLength(20)]
         [Display(Name = "Vai trò")]
-        // Các giá trị chuẩn: "Admin", "Shipper", "Customer"
         public string VaiTro { get; set; } = "Customer";
 
         [Display(Name = "Trạng thái")]
