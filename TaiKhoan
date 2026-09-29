@@ -1,0 +1,44 @@
+//VuThiVanAnh 23103100194
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace QuanLyGiaoNhan_UNETI15_TI17A1HN.Models
+{
+    [Table("TaiKhoan")]
+    public class TaiKhoan
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int MaTaiKhoan { get; set; }
+
+        [Required(ErrorMessage = "Tên đăng nhập không được để trống")]
+        [StringLength(50, ErrorMessage = "Tên đăng nhập không quá 50 ký tự")]
+        [Display(Name = "Tên đăng nhập")]
+        public string TenDangNhap { get; set; } = null!;
+
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]
+        [StringLength(255)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Mật khẩu")]
+        public string MatKhau { get; set; } = null!;
+
+        [Required(ErrorMessage = "Họ tên không được để trống")]
+        [StringLength(100)]
+        [Display(Name = "Họ và tên")]
+        public string HoTen { get; set; } = null!;
+
+        [Required(ErrorMessage = "Email không được để trống")]
+        [EmailAddress(ErrorMessage = "Email không đúng định dạng")]
+        [StringLength(100)]
+        public string Email { get; set; } = null!;
+
+        [Required]
+        [StringLength(20)]
+        [Display(Name = "Vai trò")]
+        // Các giá trị chuẩn: "Admin", "Shipper", "Customer"
+        public string VaiTro { get; set; } = "Customer";
+
+        [Display(Name = "Trạng thái")]
+        public bool TrangThai { get; set; } = true; // true: Hoạt động, false: Bị khóa
+    }
+}
